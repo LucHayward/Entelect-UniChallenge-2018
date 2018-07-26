@@ -1,1 +1,2 @@
-# Entelect-UniChallenge
+# Entelect University Challenge
+
