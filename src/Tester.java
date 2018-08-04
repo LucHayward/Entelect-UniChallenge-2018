@@ -78,7 +78,7 @@ public class Tester {
 		
 		//Some file reader tests
 		
-		Main.getInput("map_1.input");
+		Main.getInput("old_map_1.input");
 		
 		assertThat("getInput 1", Main.map.length, 10);
 		assertThat("getInput 2", Main.map[0].length, 10);
