@@ -184,19 +184,21 @@ public class Main {
 
 	public static boolean isFinished()
 	{
+		boolean temp2 = false;
 		for(int n=0; n<MN; n++)
 		{
 			Location temp = locations.get(n);
-			if(temp.isEmpty())
-			{return true;}
+			if(temp.isEmpty()) {
+				temp2 = true;
+			}
 		}
-
 
 		for(int j=0; j < workers.size(); j++)
 		{
-			Worker temp2 = workers.get(j);
-			if(temp2.isEmpty())
-			{return true;}
+			Worker temp3 = workers.get(j);
+			if(temp3.isEmpty() && temp2 == true){
+				return true;
+			}
 		}
 		return false;
 	}
