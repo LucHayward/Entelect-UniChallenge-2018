@@ -58,6 +58,18 @@ public class Tester {
 		
 		worker.visit(nearestActionLocation);
 		
+		nearestActionLocation = Main.getWorkerNearestAction(worker);
+		worker.visit(nearestActionLocation);
+		nearestActionLocation = Main.getWorkerNearestAction(worker);
+		worker.visit(nearestActionLocation);
+		nearestActionLocation = Main.getWorkerNearestAction(worker);
+		worker.visit(nearestActionLocation);
+		nearestActionLocation = Main.getWorkerNearestAction(worker);
+		worker.visit(nearestActionLocation);
+		
+		assertThat("resources count 1", Main.locations.get(0).resources, 0);
+		assertThat("resources count 2", Main.locations.get(1).resources, 0);
+		
 		assertThat("worker.isEmpty 1", worker.isEmpty(), true);
 		assertThat("isFinished 3", Main.isFinished(), true);
 		
