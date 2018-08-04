@@ -24,6 +24,8 @@ public class Tester {
 		
 		assertThat("worker.visit 1", nearestActionLocation.resources, 1);
 		assertThat("worker.visit 2", worker.heldItems.get(0), "li");
+		assertThat("worker.visit 3", worker.visitedLocations.get(0).id, nearestActionLocation.id);
+		
 		
 		nearestActionLocation = Main.getWorkerNearestAction(worker);
 		
@@ -36,12 +38,29 @@ public class Tester {
 		
 		worker.visit(nearestActionLocation);
 		
-		assertThat("worker.visit 3", nearestActionLocation.resources, 1);
-		assertThat("worker.visit 4", worker.heldItems.size(), 1);
+		assertThat("worker.visit 4", nearestActionLocation.resources, 1);
+		assertThat("worker.visit 5", worker.heldItems.size(), 1);
+		assertThat("worker.visit 6", worker.visitedLocations.get(2).id, nearestActionLocation.id);
+		
 		
 		nearestActionLocation = Main.getWorkerNearestAction(worker);
 		
 		assertThat("getWorkerNearestAction 4", nearestActionLocation.id, 2);
+		
+		
+		
+		
+		
+		
+		
+		//Some file reader tests
+		
+		Main.getInput("map_1.input");
+		
+		assertThat("getInput 1", Main.map.length, 10);
+		assertThat("getInput 2", Main.map[0].length, 10);
+		assertThat("getInput 3", Main.workers.size(), 6);
+		assertThat("getInput 4", Main.locations.size(), 18);
 		
 		
 		
