@@ -10,6 +10,7 @@ public class Worker {
 		this.letter = letter;
 		this.capacity = capacity;
 		this.heldItems = new ArrayList<>();
+		this.visitedPoints = new ArrayList<>();
 	}
 	
 	public int itemCount() {
@@ -22,6 +23,10 @@ public class Worker {
 	
 	@Override
 	public String toString() {
-		return "";
+		String s = letter + "|" + visitedPoints.get(0);
+		for (int i = 1; i < visitedPoints.size(); i++) {
+			s += "," + visitedPoints.get(i);
+		}
+		return s;
 	}
 }
