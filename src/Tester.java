@@ -20,6 +20,7 @@ public class Tester {
 		
 		assertThat("getWorkerNearestAction 1", nearestActionLocation.id,1);
 		
+		worker.visit(nearestActionLocation);
 		nearestActionLocation = Main.getWorkerNearestAction(worker);
 		
 		assertThat("getWorkerNearestAction 2", nearestActionLocation.id, 0);
