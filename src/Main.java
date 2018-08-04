@@ -30,36 +30,7 @@ public class Main {
 	 * Simulates all problem
 	 */
 	private static void simulate() {
-		
-		long totalCost = 0l;
-		
-		while (true) {
-			//Find cheapest next option
-			Worker worker = null;
-			Location nextOption = null;
-			int minDistance = Integer.MAX_VALUE;
 
-			System.out.println(workers.size());
-
-			for (Worker tempWorker : workers) {
-				System.out.println(tempWorker.toString());
-				Location potentialNextOption = getWorkerNearestAction(tempWorker);
-				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
-				if (tempDist < minDistance) {
-					minDistance = tempDist;
-					worker = tempWorker;
-					nextOption = potentialNextOption;
-				}
-			}
-			
-			worker.visit(nextOption);
-			totalCost += minDistance;
-			
-			if (totalCost > Budget) {
-				System.out.println("Suicide is the best way to go from here");
-				System.exit(-1);
-			}
-		}
 	}
 
 	/**
