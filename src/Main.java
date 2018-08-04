@@ -28,9 +28,10 @@ public class Main {
                 int C = Integer.parseInt(data.next()); // width
                  map = new int[R][C];
 
+                List<Worker> workers = new ArrayList<>();
+
                 // get number of miners
                 int numMiners = Integer.parseInt(data.next());
-                List<Worker> workers = new ArrayList<>();
 
                 // loop through miners
                 for(int i = 0; i<numMiners; i++) {
@@ -45,9 +46,13 @@ public class Main {
                     workers.add(new Worker('E',3));
                 }
 
+                // get number of haulers
+                int numHaulers = Integer.parseInt(data.next());
 
-
-
+                // loop through haulers
+                for(int i = 0; i<numHaulers; i++) {
+                    workers.add(new Worker('H',5));
+                }
             }
         }
         catch (Exception e) {
