@@ -58,6 +58,7 @@ public class Tester {
 		
 		worker.visit(nearestActionLocation);
 		
+		assertThat("worker.isEmpty 1", worker.isEmpty(), true);
 		assertThat("isFinished 3", Main.isFinished(), true);
 		
 		
