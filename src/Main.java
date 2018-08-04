@@ -24,10 +24,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		getInput("map_4.input");
-		simulate();
+		simulate(); //Used to run a greedy algorithim.
+		//lucTest(); //Use this to run the dumb implementation.
 		createSubmission();
 	}
 
+	/**
+	 * This is a very simple dumb implementation using only one worker, used for 1,4,5
+	 */
 	private static void lucTest() {
 		Worker worker = workers.get(0);
 		while (!isFinished()) {
@@ -38,7 +42,7 @@ public class Main {
 
 
 	/**
-	 * Simulates all problem
+	 * A greedy implementation using all workers, used for number 3
 	 */
 	private static void simulate() {
 		
@@ -51,7 +55,6 @@ public class Main {
 			int minDistance = Integer.MAX_VALUE;
 
 			for (Worker tempWorker : workers) {
-				//if(isFinished())break;
 				Location potentialNextOption = getWorkerNearestAction(tempWorker);
 				if (potentialNextOption == null) continue;
 				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
