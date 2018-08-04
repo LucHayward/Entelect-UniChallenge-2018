@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class Tester {
+	private static boolean allTestPassed = true;
+	
 	public static void main(String[] args) {
 		Main.locations = new ArrayList<>();
 		
@@ -13,14 +15,17 @@ public class Tester {
 		
 		Location nearestActionLocation = Main.getWorkerNearestAction(worker);
 		
-		assertThat("getWorkerNearestAction 1", nearestActionLocation.id == 0);
+		assertThat("getWorkerNearestAction 1", nearestActionLocation.id == 1);
 		
-		System.out.println("Finished tests");
+		if (allTestPassed) {
+			System.out.println("All tests passed");
+		}
 	}
 	
 	private static void assertThat(String testName, boolean bool) {
 		if (!bool) {
 			System.out.println(testName + " is not working");
+			allTestPassed = false;
 		}
 	}
 }
