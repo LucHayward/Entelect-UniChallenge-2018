@@ -26,6 +26,7 @@ public class Main {
 		getInput("map_1.input");
 		simulate();
 		for (Worker worker : workers) System.out.println(worker);
+		createSubmission();
 	}
 
 	private static void lucTest() {
