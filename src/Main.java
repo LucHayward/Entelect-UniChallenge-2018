@@ -23,9 +23,19 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput("map_1.input");
-		simulate();
+		getInput("map_3.input");
+		lucTest();
+		createSubmission();
 	}
+
+	private static void lucTest() {
+		Worker worker = workers.get(0);
+		while (!isFinished()) {
+				worker.visit(getWorkerNearestAction(worker));
+		}
+		System.out.println(worker);
+	}
+
 
 	/**
 	 * Simulates all problem
@@ -188,12 +198,10 @@ public class Main {
 		try {
 			File file = new File("output.txt");
 			output = new BufferedWriter(new FileWriter(file));
-			output.write("Something");
-
-
 			//loop over workers
 			for (Worker worker : workers) {
 				output.write(worker.toString());
+				output.write("\n");
 			}
 
 		}
