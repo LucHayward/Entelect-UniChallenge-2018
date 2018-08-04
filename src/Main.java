@@ -23,7 +23,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput("map_1.input");
+		getInput("input.txt");
 		simulate();
 	}
 
@@ -38,6 +38,7 @@ public class Main {
 	 *
 	 * @param fileName file to get input for
 	 */
+	@SuppressWarnings("Duplicates")
 	public static void getInput(String fileName) {
 		String temp;
 		File f;
@@ -84,7 +85,7 @@ public class Main {
 			F = Integer.parseInt(data.next());
 
 			//get budget
-			Budget = Long.parseLong(data.next());
+			Budget = Long.parseLong(data.nextLine().trim());
 
             List<Location> locations = new ArrayList<>();
             // loop through mines
