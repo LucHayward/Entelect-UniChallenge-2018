@@ -2,7 +2,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,6 +30,27 @@ public class Main {
 	 * Simulates all problem
 	 */
 	private static void simulate() {
+		
+		long totalCost = 0l;
+		
+		while (true) {
+			//Find cheapest next option
+			Worker worker = null;
+			Location nextOption = null;
+			int minDistance = Integer.MAX_VALUE;
+			for (Worker tempWorker : workers) {
+				Location potentialNextOption = getWorkerNearestAction(tempWorker);
+				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
+				if (tempDist < minDistance) {
+					minDistance = tempDist;
+					worker = tempWorker;
+					nextOption = potentialNextOption;
+				}
+			}
+			
+			worker.visit(nextOption);
+			totalCost += minDistance;
+		}
 	}
 
 	/**
