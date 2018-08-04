@@ -1,11 +1,24 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static int[][] map;
-    List<Location> locations;
+	static int[][] map;
+	static List<Location> locations;
+	static int R;
+	static int C;
+	static int E;
+	static List<Worker> worker;
+    static int MN;
+    static int F;
+    static int Budget;
+    static int numMiners;
+    static int numExcavators;
 
 
     public static void main(String[] args) {
@@ -21,15 +34,14 @@ public class Main {
             data.useDelimiter(" ");
 
             // process the input file
-
-            int R = Integer.parseInt(data.next()); // height
-            int C = Integer.parseInt(data.next()); // width
+            R = Integer.parseInt(data.next()); // height
+            C = Integer.parseInt(data.next()); // width
             map = new int[R][C];
 
             List<Worker> workers = new ArrayList<>();
 
             // get number of miners
-            int numMiners = Integer.parseInt(data.next());
+            numMiners = Integer.parseInt(data.next());
 
             // loop through miners
             for (int i = 0; i < numMiners; i++) {
@@ -37,7 +49,7 @@ public class Main {
             }
 
             // get number of excavators
-            int numExcavators = Integer.parseInt(data.next());
+            numExcavators = Integer.parseInt(data.next());
 
             // loop through excavators
             for (int i = 0; i < numExcavators; i++) {
@@ -52,9 +64,9 @@ public class Main {
                 workers.add(new Worker('H', 5));
             }
 
-            int MN = Integer.parseInt(data.next());
-            int F = Integer.parseInt(data.next());
-            int Budget = Integer.parseInt(data.next());
+            MN = Integer.parseInt(data.next());
+            F = Integer.parseInt(data.next());
+            Budget = Integer.parseInt(data.next());
 
             List<Location> locations = new ArrayList<>();
         } catch (Exception e) {
@@ -62,14 +74,14 @@ public class Main {
         }
 
 	}
-	
+
 	private static Location getWorkerNearestAction(Worker worker) {
-     
-	    Location nearestActionLocation = null;
+
+	Location nearestActionLocation = null;
         int minDistance = Integer.MAX_VALUE;
-	    
+
         for (Location location : locations) {
-            
+
             if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
                 //If we want to visit this place
                 if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
@@ -77,10 +89,38 @@ public class Main {
                     nearestActionLocation = location;
                 }
             }
-            
+
         }
-        
+
         return nearestActionLocation;
     }
 
+	private static void createSubmission() {
+		BufferedWriter output = null;
+		try {
+			File file = new File("output.txt");
+			output = new BufferedWriter(new FileWriter(file));
+			output.write("Something");
+
+
+			//loop over workers
+			for (Worker worker : workers){
+				output.write(worker.toString());
+			}
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (output != null) {
+				try {
+					output.close();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
