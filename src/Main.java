@@ -23,9 +23,9 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput("map_3.input");
-		lucTest();
-		createSubmission();
+		getInput("map_1.input");
+		simulate();
+		for (Worker worker : workers) System.out.println(worker);
 	}
 
 	private static void lucTest() {
