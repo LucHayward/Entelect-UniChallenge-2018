@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Main {
 	static int[][] map;
-	List<Location> locations;
+	static List<Location> locations;
 
 
 	public static void main(String[] args) {
@@ -21,8 +21,24 @@ public class Main {
 
 	}
 	
-	private static void getWorkerNearestAction(Worker worker) {
-    
+	private static Location getWorkerNearestAction(Worker worker) {
+     
+	    Location nearestActionLocation = null;
+        int minDistance = Integer.MAX_VALUE;
+	    
+        for (Location location : locations) {
+            
+            if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
+                //If we want to visit this place
+                if (location.isMine() || worker.heldItems.contains(location.symbol)) {
+                    minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
+                    nearestActionLocation = location;
+                }
+            }
+            
+        }
+        
+        return nearestActionLocation;
     }
 
 }
