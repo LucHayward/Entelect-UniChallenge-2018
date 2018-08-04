@@ -8,17 +8,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	static int[][] map;
-	static List<Location> locations;
-	static int R;
-	static int C;
-	static int E;
-	static List<Worker> workers;
+    static int[][] map;
+    static List<Location> locations;
+    static int R;
+    static int C;
+    static int E;
+    static List<Worker> workers;
     static int MN;
     static int F;
     static int Budget;
     static int numMiners;
     static int numExcavators;
+    static int numHaulers;
 
 
     public static void main(String[] args) {
@@ -57,7 +58,7 @@ public class Main {
             }
 
             // get number of haulers
-            int numHaulers = Integer.parseInt(data.next());
+            numHaulers = Integer.parseInt(data.next());
 
             // loop through haulers
             for (int i = 0; i < numHaulers; i++) {
@@ -73,61 +74,82 @@ public class Main {
             //get budget
             Budget = Integer.parseInt(data.next());
 
-            // loop through mine
-
             List<Location> locations = new ArrayList<>();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-	}
-
-	private static Location getWorkerNearestAction(Worker worker) {
-
-	Location nearestActionLocation = null;
-        int minDistance = Integer.MAX_VALUE;
-
-        for (Location location : locations) {
-
-            if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
-                //If we want to visit this place
-                if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
-                    minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
-                    nearestActionLocation = location;
+            // loop through mines
+            for (int i = 0; i < MN; i++) {
+                for (int j = 0; j < 5; j++) {
+                    int I = Integer.parseInt(data.next());
+                    String T = (data.next());
+                    int x = Integer.parseInt(data.next());
+                    int y = Integer.parseInt(data.next());
+                    int resources = Integer.parseInt(data.next());
+                    Coordinate xy = new Coordinate(x, y);
+                    Location location = new Location(I, T, xy, resources);
+                    locations.add(location);
                 }
             }
+            // loop through factories
+            for (int i = 0; i < F; i++) {
+                for (int j = 0; j < 4; j++) {
+                    int index = Integer.parseInt(data.next());
+                    String tag = (data.next());
+                    int xcoord = Integer.parseInt(data.next());
+                    int ycoord = Integer.parseInt(data.next());
+                    int resource = Integer.parseInt(data.next());
+                    Coordinate xy = new Coordinate(xcoord, ycoord);
+                    Location location2 = new Location(index, tag, xy, resource);
+                    locations.add(location2);
 
+                }
+            }
+        }
+        catch(Exception e){
+                System.out.println(e);
+            }
+
+        private static Location getWorkerNearestAction (Worker worker){
+
+            Location nearestActionLocation = null;
+            int minDistance = Integer.MAX_VALUE;
+
+            for (Location location : locations) {
+
+                if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
+                    //If we want to visit this place
+                    if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
+                        minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
+                        nearestActionLocation = location;
+                    }
+                }
+
+            }
+
+            return nearestActionLocation;
         }
 
-        return nearestActionLocation;
+        private static void createSubmission () {
+            BufferedWriter output = null;
+            try {
+                File file = new File("output.txt");
+                output = new BufferedWriter(new FileWriter(file));
+                output.write("Something");
+
+
+                //loop over workers
+                for (Worker worker : workers) {
+                    output.write(worker.toString());
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (output != null) {
+                    try {
+                        output.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
-
-	private static void createSubmission() {
-		BufferedWriter output = null;
-		try {
-			File file = new File("output.txt");
-			output = new BufferedWriter(new FileWriter(file));
-			output.write("Something");
-
-
-			//loop over workers
-			for (Worker worker : workers){
-				output.write(worker.toString());
-			}
-
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (output != null) {
-				try {
-					output.close();
-				}
-				catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-}
