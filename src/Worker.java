@@ -40,6 +40,10 @@ public class Worker {
 		position = location.coordinate;
 	}
 	
+	public boolean isEmpty() {
+		return heldItems.size() == 0;
+	}
+	
 	@Override
 	public String toString() {
 		String s = letter + "|" + visitedLocations.get(0).id;
