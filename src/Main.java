@@ -13,7 +13,7 @@ public class Main {
 	static int R;
 	static int C;
 	static int E;
-	static List<Worker> worker;
+	static List<Worker> workers;
     static int MN;
     static int F;
     static int Budget;
@@ -38,7 +38,7 @@ public class Main {
             C = Integer.parseInt(data.next()); // width
             map = new int[R][C];
 
-            List<Worker> workers = new ArrayList<>();
+            workers = new ArrayList<>();
 
             // get number of miners
             numMiners = Integer.parseInt(data.next());
@@ -64,9 +64,16 @@ public class Main {
                 workers.add(new Worker('H', 5));
             }
 
+            // get number of mines
             MN = Integer.parseInt(data.next());
+
+            // get number of factories
             F = Integer.parseInt(data.next());
+
+            //get budget
             Budget = Integer.parseInt(data.next());
+
+            // loop through mine
 
             List<Location> locations = new ArrayList<>();
         } catch (Exception e) {
