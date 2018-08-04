@@ -9,7 +9,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput();
+		getInput("");
 	}
 
     private static void getInput(String fileName) {
