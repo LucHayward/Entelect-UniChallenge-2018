@@ -186,8 +186,18 @@ public class Main {
 	{
 		for(int n=0; n<MN; n++)
 		{
-
+			Location temp = locations.get(n);
+			if(temp.isEmpty())
+			{return true;}
 		}
-		return true;
+
+
+		for(int j=0; j<numMiners; j++)
+		{
+			Worker temp2 = workers.get(j);
+			if(temp2.isEmpty())
+			{return true;}
+		}
+		return false;
 	}
 }
