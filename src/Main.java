@@ -192,7 +192,7 @@ public class Main {
 		}
 
 
-		for(int j=0; j<numMiners; j++)
+		for(int j=0; j < workers.size(); j++)
 		{
 			Worker temp2 = workers.get(j);
 			if(temp2.isEmpty())
