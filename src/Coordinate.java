@@ -2,6 +2,11 @@
  * Simple coordinate class to store x,y values and simplify other areas of the program.
  */
 public class Coordinate {
+	
+	public static int distanceBetween(Coordinate a, Coordinate b) {
+		return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+	}
+	
 	public int x, y;
 
 	public Coordinate(int x, int y) {

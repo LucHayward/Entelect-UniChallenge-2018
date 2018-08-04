@@ -5,6 +5,7 @@ public class Worker {
 	public int capacity;
 	public ArrayList<String> heldItems;
 	public ArrayList<Integer> visitedPoints;
+	public Coordinate position;
 	
 	public Worker(char letter, int capacity) {
 		this.letter = letter;
