@@ -22,57 +22,69 @@ public class Main {
     static int numHaulers;
 
 
-    public static void main(String[] args) {
-        getInput("");
-    }
+	public static void main(String[] args) {
+		getInput("map_1.input");
+		simulate();
+	}
 
-    private static void getInput(String fileName) {
-        String temp;
-        File f;
-        try {
-            f = new File(fileName);
-            Scanner data = new Scanner(f);
-            data.useDelimiter(" ");
+	/**
+	 * Simulates all problem
+	 */
+	private static void simulate() {
+	}
 
-            // process the input file
-            R = Integer.parseInt(data.next()); // height
-            C = Integer.parseInt(data.next()); // width
-            map = new int[R][C];
+	/**
+	 * Get input and update all environment variables.
+	 *
+	 * @param fileName file to get input for
+	 */
+	public static void getInput(String fileName) {
+		String temp;
+		File f;
+		try {
+			f = new File(fileName);
+			Scanner data = new Scanner(f);
+			data.useDelimiter(" ");
 
-            workers = new ArrayList<>();
+			// process the input file
+			R = Integer.parseInt(data.next()); // height
+			C = Integer.parseInt(data.next()); // width
+			map = new int[R][C];
 
-            // get number of miners
-            numMiners = Integer.parseInt(data.next());
+			workers = new ArrayList<>();
 
-            // loop through miners
-            for (int i = 0; i < numMiners; i++) {
-                workers.add(new Worker('M', 1));
-            }
+			// get number of miners
+			numMiners = Integer.parseInt(data.next());
 
-            // get number of excavators
-            numExcavators = Integer.parseInt(data.next());
+			// loop through miners
+			for (int i = 0; i < numMiners; i++) {
+				workers.add(new Worker('M', 1));
+			}
 
-            // loop through excavators
-            for (int i = 0; i < numExcavators; i++) {
-                workers.add(new Worker('E', 3));
-            }
+			// get number of excavators
+			numExcavators = Integer.parseInt(data.next());
+
+			// loop through excavators
+			for (int i = 0; i < numExcavators; i++) {
+				workers.add(new Worker('E', 3));
+			}
 
             // get number of haulers
             numHaulers = Integer.parseInt(data.next());
 
-            // loop through haulers
-            for (int i = 0; i < numHaulers; i++) {
-                workers.add(new Worker('H', 5));
-            }
+			// loop through haulers
+			for (int i = 0; i < numHaulers; i++) {
+				workers.add(new Worker('H', 5));
+			}
 
-            // get number of mines
-            MN = Integer.parseInt(data.next());
+			// get number of mines
+			MN = Integer.parseInt(data.next());
 
-            // get number of factories
-            F = Integer.parseInt(data.next());
+			// get number of factories
+			F = Integer.parseInt(data.next());
 
-            //get budget
-            Budget = Integer.parseInt(data.next());
+			//get budget
+			Budget = Long.parseLong(data.next());
 
             List<Location> locations = new ArrayList<>();
             // loop through mines
@@ -107,49 +119,72 @@ public class Main {
                 System.out.println(e);
             }
 
-        private static Location getWorkerNearestAction (Worker worker){
+	}
 
-            Location nearestActionLocation = null;
-            int minDistance = Integer.MAX_VALUE;
+	/**
+	 * Find most effective next move for a given worker.
+	 *
+	 * @param worker the worker to be analysed
+	 * @return the next loation for that worker.
+	 */
+	public static Location getWorkerNearestAction(Worker worker) {
 
-            for (Location location : locations) {
+		Location nearestActionLocation = null;
+		int minDistance = Integer.MAX_VALUE;
 
-                if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
-                    //If we want to visit this place
-                    if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
-                        minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
-                        nearestActionLocation = location;
-                    }
-                }
+		for (Location location : locations) {
 
-            }
+			if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
+				//If we want to visit this place
+				if ((location.isMine() && !location.isEmpty() && !worker.heldItems.contains(location.symbol.toLowerCase()))
+						|| worker.heldItems.contains(location.symbol)) {
 
-            return nearestActionLocation;
-        }
+					minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
+					nearestActionLocation = location;
+				}
+			}
 
-        private static void createSubmission () {
-            BufferedWriter output = null;
-            try {
-                File file = new File("output.txt");
-                output = new BufferedWriter(new FileWriter(file));
-                output.write("Something");
+		}
+
+		return nearestActionLocation;
+	}
+
+	/**
+	 * Creates a visual representation of the map state
+	 */
+	private static void createRepresentation() {
+		System.out.println(map);
+	}
+
+	/**
+	 * Creates an output file for submission.
+	 */
+	private static void createSubmission() {
+		BufferedWriter output = null;
+		try {
+			File file = new File("output.txt");
+			output = new BufferedWriter(new FileWriter(file));
+			output.write("Something");
 
 
-                //loop over workers
-                for (Worker worker : workers) {
-                    output.write(worker.toString());
-                }
+			//loop over workers
+			for (Worker worker : workers) {
+				output.write(worker.toString());
+			}
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (output != null) {
-                    try {
-                        output.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (output != null) {
+				try {
+					output.close();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+}

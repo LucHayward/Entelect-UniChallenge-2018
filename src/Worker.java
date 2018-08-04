@@ -12,6 +12,7 @@ public class Worker {
 		this.capacity = capacity;
 		this.heldItems = new ArrayList<>();
 		this.visitedLocations = new ArrayList<>();
+		this.position = new Coordinate(0, 0);
 	}
 	
 	public int itemCount() {
@@ -20,6 +21,12 @@ public class Worker {
 	
 	public void visit(Location location) {
 		visitedLocations.add(location);
+		
+		if (location.isMine()) {
+			heldItems.add(location.symbol.toLowerCase());
+		}
+		
+		position = location.coordinate;
 	}
 	
 	@Override
