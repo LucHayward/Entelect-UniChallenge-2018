@@ -72,7 +72,7 @@ public class Main {
             
             if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
                 //If we want to visit this place
-                if (location.isMine() || worker.heldItems.contains(location.symbol)) {
+                if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
                     minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
                     nearestActionLocation = location;
                 }
