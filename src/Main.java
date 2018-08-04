@@ -37,7 +37,7 @@ public class Main {
 	 *
 	 * @param fileName file to get input for
 	 */
-	private static void getInput(String fileName) {
+	public static void getInput(String fileName) {
 		String temp;
 		File f;
 		try {
@@ -101,7 +101,7 @@ public class Main {
 	 * @param worker the worker to be analysed
 	 * @return the next loation for that worker.
 	 */
-	private static Location getWorkerNearestAction(Worker worker) {
+	public static Location getWorkerNearestAction(Worker worker) {
 
 		Location nearestActionLocation = null;
 		int minDistance = Integer.MAX_VALUE;

@@ -12,6 +12,7 @@ public class Worker {
 		this.capacity = capacity;
 		this.heldItems = new ArrayList<>();
 		this.visitedLocations = new ArrayList<>();
+		this.position = new Coordinate(0, 0);
 	}
 	
 	public int itemCount() {
