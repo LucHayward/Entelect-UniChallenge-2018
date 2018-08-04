@@ -1,6 +1,5 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,7 +18,6 @@ public class Main {
         try {
             f = new File(fileName);
             Scanner data = new Scanner(f);
-            data = new Scanner(f);
             data.useDelimiter(" ");
 
             while(data.hasNext()) // process the input file
@@ -53,6 +51,10 @@ public class Main {
                 for(int i = 0; i<numHaulers; i++) {
                     workers.add(new Worker('H',5));
                 }
+
+                int numMines = Integer.parseInt(data.next());
+                int numFactories = Integer.parseInt(data.next());
+                int budget = Integer.parseInt(data.next());
             }
         }
         catch (Exception e) {
