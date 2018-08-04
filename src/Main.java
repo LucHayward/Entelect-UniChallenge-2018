@@ -182,7 +182,7 @@ public class Main {
 		}
 	}
 
-	public static void isFinished()
+	public static boolean isFinished()
 	{
 		for(int n=0; n<MN; n++)
 		{
