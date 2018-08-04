@@ -18,7 +18,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput();
+		getInput("");
 	}
 
 	private static void getInput(String fileName) {
@@ -53,7 +53,13 @@ public class Main {
 					workers.add(new Worker('E', 3));
 				}
 
+// get number of haulers
+                int numHaulers = Integer.parseInt(data.next());
 
+                // loop through haulers
+                for(int i = 0; i<numHaulers; i++) {
+                    workers.add(new Worker('H',5));
+                }
 			}
 		}
 		catch (Exception e) {
