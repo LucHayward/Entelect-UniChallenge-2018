@@ -38,9 +38,8 @@ public class Tester {
 		
 		worker.visit(nearestActionLocation);
 		
-		assertThat("worker.visit 4", nearestActionLocation.resources, 1);
-		assertThat("worker.visit 5", worker.heldItems.size(), 1);
-		assertThat("worker.visit 6", worker.visitedLocations.get(2).id, nearestActionLocation.id);
+		assertThat("worker.visit 4", worker.heldItems.size(), 1);
+		assertThat("worker.visit 5", worker.visitedLocations.get(2).id, nearestActionLocation.id);
 		
 		
 		nearestActionLocation = Main.getWorkerNearestAction(worker);
@@ -63,6 +62,20 @@ public class Tester {
 		assertThat("getInput 4", Main.MN, 8);
 		assertThat("getInput 5", Main.F, 10);
 		assertThat("getInput 6", Main.locations.size(), 18);
+		assertThat("getInput 7", Main.Budget, 100000000000000l);
+		Location location2 = Main.locations.get(1); //A mine
+		assertThat("getInput 8", location2.id, 1);
+		assertThat("getInput 9", location2.symbol, "NI");
+		assertThat("getInput 10", location2.coordinate, new Coordinate(7, 3));
+		assertThat("getInput 11", location2.resources, 11);
+		Location location12 = Main.locations.get(10); //A factory
+		assertThat("getInput 12", location12.id, 10);
+		assertThat("getInput 13", location12.symbol, "tm");
+		assertThat("getInput 14", location12.coordinate, new Coordinate(2, 0));
+		
+		
+		
+		
 		
 		
 		
