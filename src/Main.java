@@ -23,9 +23,8 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput("map_1.input");
+		getInput("map_4.input");
 		simulate();
-		for (Worker worker : workers) System.out.println(worker);
 		createSubmission();
 	}
 
@@ -52,6 +51,7 @@ public class Main {
 			int minDistance = Integer.MAX_VALUE;
 
 			for (Worker tempWorker : workers) {
+				//if(isFinished())break;
 				Location potentialNextOption = getWorkerNearestAction(tempWorker);
 				if (potentialNextOption == null) continue;
 				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
