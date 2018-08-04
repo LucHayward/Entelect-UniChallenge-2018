@@ -96,8 +96,11 @@ public class Main {
 			output = new BufferedWriter(new FileWriter(file));
 			output.write("Something");
 
+
 			//loop over workers
-			for ()
+			for (Worker worker : workers){
+				output.write(worker.toString());
+			}
 
 		}
 		catch (IOException e) {
