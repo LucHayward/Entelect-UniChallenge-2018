@@ -50,11 +50,9 @@ public class Main {
 			Location nextOption = null;
 			int minDistance = Integer.MAX_VALUE;
 
-			System.out.println(workers.size());
-
 			for (Worker tempWorker : workers) {
-				System.out.println(tempWorker.toString());
 				Location potentialNextOption = getWorkerNearestAction(tempWorker);
+				if (potentialNextOption == null) continue;
 				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
 				if (tempDist < minDistance) {
 					minDistance = tempDist;
