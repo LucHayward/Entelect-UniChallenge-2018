@@ -50,6 +50,11 @@ public class Main {
 			
 			worker.visit(nextOption);
 			totalCost += minDistance;
+			
+			if (totalCost > Budget) {
+				System.out.println("Suicide is the best way to go from here");
+				System.exit(-1);
+			}
 		}
 	}
 
