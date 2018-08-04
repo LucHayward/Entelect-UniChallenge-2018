@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	static int[][] map;
-	static List<Location> locations;
+    static int[][] map;
+    List<Location> locations;
 
 
-	public static void main(String[] args) {
-		getInput("");
-	}
+    public static void main(String[] args) {
+        getInput("");
+    }
 
     private static void getInput(String fileName) {
         String temp;
@@ -20,67 +20,51 @@ public class Main {
             Scanner data = new Scanner(f);
             data.useDelimiter(" ");
 
-            while(data.hasNext()) // process the input file
-            {
-                int R = Integer.parseInt(data.next()); // height
-                int C = Integer.parseInt(data.next()); // width
-                 map = new int[R][C];
+            // process the input file
 
-                List<Worker> workers = new ArrayList<>();
+            int R = Integer.parseInt(data.next()); // height
+            int C = Integer.parseInt(data.next()); // width
+            map = new int[R][C];
 
-                // get number of miners
-                int numMiners = Integer.parseInt(data.next());
+            List<Worker> workers = new ArrayList<>();
 
-                // loop through miners
-                for(int i = 0; i<numMiners; i++) {
-                    workers.add(new Worker('M',1));
-                }
+            // get number of miners
+            int numMiners = Integer.parseInt(data.next());
 
-                // get number of excavators
-                int numExcavators = Integer.parseInt(data.next());
-
-                // loop through excavators
-                for(int i = 0; i<numExcavators; i++) {
-                    workers.add(new Worker('E',3));
-                }
-
-                // get number of haulers
-                int numHaulers = Integer.parseInt(data.next());
-
-                // loop through haulers
-                for(int i = 0; i<numHaulers; i++) {
-                    workers.add(new Worker('H',5));
-                }
-
-                int numMines = Integer.parseInt(data.next());
-                int numFactories = Integer.parseInt(data.next());
-                int budget = Integer.parseInt(data.next());
+            // loop through miners
+            for (int i = 0; i < numMiners; i++) {
+                workers.add(new Worker('M', 1));
             }
-        }
-        catch (Exception e) {
+
+            // get number of excavators
+            int numExcavators = Integer.parseInt(data.next());
+
+            // loop through excavators
+            for (int i = 0; i < numExcavators; i++) {
+                workers.add(new Worker('E', 3));
+            }
+
+            // get number of haulers
+            int numHaulers = Integer.parseInt(data.next());
+
+            // loop through haulers
+            for (int i = 0; i < numHaulers; i++) {
+                workers.add(new Worker('H', 5));
+            }
+
+            int MN = Integer.parseInt(data.next());
+            int F = Integer.parseInt(data.next());
+            int Budget = Integer.parseInt(data.next());
+
+            List<Location> locations = new ArrayList<>();
+        } catch (Exception e) {
             System.out.println(e);
         }
 
-	}
-	
-	private static Location getWorkerNearestAction(Worker worker) {
-     
-	    Location nearestActionLocation = null;
-        int minDistance = Integer.MAX_VALUE;
-	    
-        for (Location location : locations) {
-            
-            if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
-                //If we want to visit this place
-                if (location.isMine() || worker.heldItems.contains(location.symbol)) {
-                    minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
-                    nearestActionLocation = location;
-                }
-            }
-            
-        }
-        
-        return nearestActionLocation;
+    }
+
+    private static void getWorkerNearestAction(Worker worker) {
+
     }
 
 }
