@@ -23,7 +23,18 @@ public class Worker {
 		visitedLocations.add(location);
 		
 		if (location.isMine()) {
+			//Pick up resource
 			heldItems.add(location.symbol.toLowerCase());
+			location.resources--;
+		} else {
+			//Drop off resource
+			for (int i = 0; i < heldItems.size(); i++) {
+				if (heldItems.get(i).equals(location.symbol)) {
+					location.resources++;
+					heldItems.remove(i);
+					break;
+				}
+			}
 		}
 		
 		position = location.coordinate;
