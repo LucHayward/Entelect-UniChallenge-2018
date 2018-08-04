@@ -8,6 +8,7 @@ public class Tester {
 		// ----------All the tests go in here:----------
 		
 		Main.locations = new ArrayList<>();
+		Main.workers = new ArrayList<>();
 		
 		Main.locations.add(new Location(0, "HE", new Coordinate(3, 6), 2));
 		Main.locations.add(new Location(1, "LI", new Coordinate(3, 5), 2));
@@ -15,6 +16,11 @@ public class Tester {
 		Main.locations.add(new Location(3, "li", new Coordinate(3, 2), 0));
 		
 		Worker worker = new Worker('M', 1);
+		Main.workers.add(worker);
+		
+		Main.MN = 2;
+		Main.F = 2;
+		Main.E = 1;
 		
 		assertThat("isFinished 1", Main.isFinished(), false);
 		

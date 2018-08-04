@@ -46,6 +46,8 @@ public class Worker {
 	
 	@Override
 	public String toString() {
+		if(visitedLocations.isEmpty()) return letter + "|";
+
 		String s = letter + "|" + visitedLocations.get(0).id;
 		for (int i = 1; i < visitedLocations.size(); i++) {
 			s += "," + visitedLocations.get(i).id;
