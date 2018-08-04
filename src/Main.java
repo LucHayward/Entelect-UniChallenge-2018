@@ -16,7 +16,7 @@ public class Main {
 	static List<Worker> workers;
 	static int MN;
 	static int F;
-	static int Budget;
+	static long Budget;
 	static int numMiners;
 	static int numExcavators;
 
@@ -83,7 +83,7 @@ public class Main {
 			F = Integer.parseInt(data.next());
 
 			//get budget
-			Budget = Integer.parseInt(data.next());
+			Budget = Long.parseLong(data.next());
 
 			// loop through mine
 
