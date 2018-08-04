@@ -21,6 +21,12 @@ public class Worker {
 	
 	public void visit(Location location) {
 		visitedLocations.add(location);
+		
+		if (location.isMine()) {
+			heldItems.add(location.symbol.toLowerCase());
+		}
+		
+		position = location.coordinate;
 	}
 	
 	@Override
