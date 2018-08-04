@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,7 +31,6 @@ public class Main {
 	 * Simulates all problem
 	 */
 	private static void simulate() {
-
 	}
 
 	/**
@@ -184,22 +184,21 @@ public class Main {
 
 	public static boolean isFinished()
 	{
-		boolean temp2 = false;
 		for(int n=0; n<MN; n++)
 		{
 			Location temp = locations.get(n);
-			if(temp.isEmpty()) {
-				temp2 = true;
+			if(!temp.isEmpty()) {
+				return false;
 			}
 		}
 
 		for(int j=0; j < workers.size(); j++)
 		{
-			Worker temp3 = workers.get(j);
-			if(temp3.isEmpty() && temp2 == true){
-				return true;
+			Worker temp = workers.get(j);
+			if(!temp.isEmpty()) {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 }
