@@ -113,7 +113,6 @@ public class Main {
 			e.printStackTrace();
                 System.out.println(e);
             }
-
 	}
 
 	/**
@@ -180,6 +179,14 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
+		}
+	}
+
+	public static void isFinished()
+	{
+		for(int n=0; n<MN; n++)
+		{
+
 		}
 	}
 }
