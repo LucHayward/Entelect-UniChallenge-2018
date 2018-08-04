@@ -1,5 +1,8 @@
+import java.io.File;
+import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 	static int[][] map;
@@ -10,12 +13,51 @@ public class Main {
 		getInput();
 	}
 
-	private static void getInput() {
+    private static void getInput(String fileName) {
+        String temp;
+        File f;
+        try {
+            f = new File(fileName);
+            Scanner data = new Scanner(f);
+            data = new Scanner(f);
+            data.useDelimiter(" ");
+
+            while(data.hasNext()) // process the input file
+            {
+                int R = Integer.parseInt(data.next()); // height
+                int C = Integer.parseInt(data.next()); // width
+                 map = new int[R][C];
+
+                // get number of miners
+                int numMiners = Integer.parseInt(data.next());
+                List<Worker> workers = new ArrayList<>();
+
+                // loop through miners
+                for(int i = 0; i<numMiners; i++) {
+                    workers.add(new Worker('M',1));
+                }
+
+                // get number of excavators
+                int numExcavators = Integer.parseInt(data.next());
+
+                // loop through excavators
+                for(int i = 0; i<numExcavators; i++) {
+                    workers.add(new Worker('E',3));
+                }
+
+
+
+
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
 
 	}
-	
+
 	private static void getWorkerNearestAction(Worker worker) {
-    
+
     }
 
 }
