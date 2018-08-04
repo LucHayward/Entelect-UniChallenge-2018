@@ -16,6 +16,6 @@ public class Location {
     }
     
     public boolean isEmpty() {
-        return resources <= 0;
+        return resources == 0;
     }
 }

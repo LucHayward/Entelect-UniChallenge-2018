@@ -16,6 +16,8 @@ public class Tester {
 		
 		Worker worker = new Worker('M', 1);
 		
+		assertThat("isFinished 1", Main.isFinished(), false);
+		
 		Location nearestActionLocation = Main.getWorkerNearestAction(worker);
 		
 		assertThat("getWorkerNearestAction 1", nearestActionLocation.id,1);
@@ -46,8 +48,11 @@ public class Tester {
 		
 		assertThat("getWorkerNearestAction 4", nearestActionLocation.id, 2);
 		
+		assertThat("isFinished 2", Main.isFinished(), false);
 		
+		worker.visit(nearestActionLocation);
 		
+		assertThat("isFinished 3", Main.isFinished(), true);
 		
 		
 		
@@ -72,9 +77,6 @@ public class Tester {
 		assertThat("getInput 12", location12.id, 10);
 		assertThat("getInput 13", location12.symbol, "tm");
 		assertThat("getInput 14", location12.coordinate, new Coordinate(2, 0));
-		
-		
-		
 		
 		
 		

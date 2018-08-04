@@ -142,7 +142,6 @@ public class Main {
 			e.printStackTrace();
                 System.out.println(e);
             }
-
 	}
 
 	/**
@@ -210,5 +209,24 @@ public class Main {
 				}
 			}
 		}
+	}
+
+	public static boolean isFinished()
+	{
+		for(int n=0; n<MN; n++)
+		{
+			Location temp = locations.get(n);
+			if(temp.isEmpty())
+			{return true;}
+		}
+
+
+		for(int j=0; j < workers.size(); j++)
+		{
+			Worker temp2 = workers.get(j);
+			if(temp2.isEmpty())
+			{return true;}
+		}
+		return false;
 	}
 }
