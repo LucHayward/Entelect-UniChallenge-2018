@@ -45,17 +45,16 @@ public class Main {
 		try {
 			f = new File(fileName);
 			Scanner data = new Scanner(f);
-			data.useDelimiter(" ");
 
 			// process the input file
-			R = Integer.parseInt(data.next()); // height
-			C = Integer.parseInt(data.next()); // width
+			R = data.nextInt(); // height
+			C = data.nextInt(); // width
 			map = new int[R][C];
 
 			workers = new ArrayList<>();
 
 			// get number of miners
-			numMiners = Integer.parseInt(data.next());
+			numMiners = data.nextInt();
 
 			// loop through miners
 			for (int i = 0; i < numMiners; i++) {
@@ -63,7 +62,7 @@ public class Main {
 			}
 
 			// get number of excavators
-			numExcavators = Integer.parseInt(data.next());
+			numExcavators = data.nextInt();
 
 			// loop through excavators
 			for (int i = 0; i < numExcavators; i++) {
@@ -71,7 +70,7 @@ public class Main {
 			}
 
             // get number of haulers
-            numHaulers = Integer.parseInt(data.next());
+            numHaulers = data.nextInt();
 
 			// loop through haulers
 			for (int i = 0; i < numHaulers; i++) {
@@ -79,44 +78,39 @@ public class Main {
 			}
 
 			// get number of mines
-			MN = Integer.parseInt(data.next());
+			MN = data.nextInt();
 
 			// get number of factories
-			F = Integer.parseInt(data.next());
+			F = data.nextInt();
 
 			//get budget
-			Budget = Long.parseLong(data.nextLine().trim());
+			Budget = data.nextLong();
 
             List<Location> locations = new ArrayList<>();
             // loop through mines
             for (int i = 0; i < MN; i++) {
-                for (int j = 0; j < 5; j++) {
-                    int I = Integer.parseInt(data.next());
-                    String T = (data.next());
-                    int x = Integer.parseInt(data.next());
-                    int y = Integer.parseInt(data.next());
-                    int resources = Integer.parseInt(data.next());
+                    int I = data.nextInt();
+                    String T = data.next();
+                    int x = data.nextInt();
+                    int y = data.nextInt();
+                    int resources = data.nextInt();
                     Coordinate xy = new Coordinate(x, y);
                     Location location = new Location(I, T, xy, resources);
                     locations.add(location);
-                }
             }
             // loop through factories
             for (int i = 0; i < F; i++) {
-                for (int j = 0; j < 4; j++) {
-                    int index = Integer.parseInt(data.next());
-                    String tag = (data.next());
-                    int xcoord = Integer.parseInt(data.next());
-                    int ycoord = Integer.parseInt(data.next());
-                    int resource = Integer.parseInt(data.next());
+                    int index = data.nextInt();
+                    String tag = data.next();
+                    int xcoord = data.nextInt();
+                    int ycoord = data.nextInt();
                     Coordinate xy = new Coordinate(xcoord, ycoord);
-                    Location location2 = new Location(index, tag, xy, resource);
+                    Location location2 = new Location(index, tag, xy, 0);
                     locations.add(location2);
-
-                }
             }
         }
         catch(Exception e){
+			e.printStackTrace();
                 System.out.println(e);
             }
 
