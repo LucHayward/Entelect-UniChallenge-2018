@@ -38,7 +38,11 @@ public class Main {
 			Worker worker = null;
 			Location nextOption = null;
 			int minDistance = Integer.MAX_VALUE;
+
+			System.out.println(workers.size());
+
 			for (Worker tempWorker : workers) {
+				System.out.println(tempWorker.toString());
 				Location potentialNextOption = getWorkerNearestAction(tempWorker);
 				int tempDist = Coordinate.distanceBetween(tempWorker.position, potentialNextOption.coordinate);
 				if (tempDist < minDistance) {
