@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 	static int[][] map;
-	List<Mine> mines;
+	List<Location> locations;
 
 
 	public static void main(String[] args) {
@@ -19,5 +20,9 @@ public class Main {
 	private static void getInput() {
 
 	}
+	
+	private static void getWorkerNearestAction(Worker worker) {
+    
+    }
 
 }
