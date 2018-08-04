@@ -23,7 +23,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-		getInput("input.txt");
+		getInput("map_1.input");
 		simulate();
 		for (Worker worker : workers) System.out.println(worker);
 	}
