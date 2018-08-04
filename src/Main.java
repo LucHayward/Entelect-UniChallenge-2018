@@ -26,7 +26,7 @@ public class Main {
 		try {
 			f = new File(fileName);
 			Scanner data = new Scanner(f);
-			data = new Scanner(f);
+
 			data.useDelimiter(" ");
 
 			while (data.hasNext()) // process the input file
@@ -59,7 +59,9 @@ public class Main {
                 for(int i = 0; i<numHaulers; i++) {
                     workers.add(new Worker('H',5));
                 }
-			}
+			int numMines = Integer.parseInt(data.next());
+                int numFactories = Integer.parseInt(data.next());
+                int budget = Integer.parseInt(data.next());}
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -76,7 +78,7 @@ public class Main {
 
             if (Coordinate.distanceBetween(location.coordinate, worker.position) < minDistance) {
                 //If we want to visit this place
-                if (location.isMine() || worker.heldItems.contains(location.symbol)) {
+                if ((location.isMine() && !location.isEmpty()) || worker.heldItems.contains(location.symbol)) {
                     minDistance = Coordinate.distanceBetween(location.coordinate, worker.position);
                     nearestActionLocation = location;
                 }
