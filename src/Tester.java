@@ -60,7 +60,9 @@ public class Tester {
 		assertThat("getInput 1", Main.map.length, 10);
 		assertThat("getInput 2", Main.map[0].length, 10);
 		assertThat("getInput 3", Main.workers.size(), 6);
-		assertThat("getInput 4", Main.locations.size(), 18);
+		assertThat("getInput 4", Main.MN, 8);
+		assertThat("getInput 5", Main.F, 10);
+		assertThat("getInput 6", Main.locations.size(), 18);
 		
 		
 		

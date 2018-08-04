@@ -86,7 +86,7 @@ public class Main {
 			//get budget
 			Budget = data.nextLong();
 
-            List<Location> locations = new ArrayList<>();
+            locations = new ArrayList<>();
             // loop through mines
             for (int i = 0; i < MN; i++) {
                     int I = data.nextInt();
