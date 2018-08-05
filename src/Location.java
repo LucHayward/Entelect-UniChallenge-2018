@@ -1,3 +1,6 @@
+// All work work herein was produced through collaboration between Luc Hayward, 
+// Stuart Mesham and Keegan White during the Entelect UniChallenge 2018.
+
 public class Location {
     public int id;
     public String symbol;

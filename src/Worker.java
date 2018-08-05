@@ -1,3 +1,6 @@
+// All work work herein was produced through collaboration between Luc Hayward, 
+// Stuart Mesham and Keegan White during the Entelect UniChallenge 2018.
+
 import java.util.ArrayList;
 
 public class Worker {

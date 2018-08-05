@@ -1,3 +1,6 @@
+// All work work herein was produced through collaboration between Luc Hayward, 
+// Stuart Mesham and Keegan White during the Entelect UniChallenge 2018.
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -24,15 +27,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		getInput("map_4.input");
-		simulate(); //Used to run a greedy algorithim.
-		//lucTest(); //Use this to run the dumb implementation.
+		greedy(); //Used to run a greedy algorithim.
+		//simple(); //Use this to run the dumb implementation.
 		createSubmission();
 	}
 
 	/**
 	 * This is a very simple dumb implementation using only one worker, used for 1,4,5
 	 */
-	private static void lucTest() {
+	private static void simple() {
 		Worker worker = workers.get(0);
 		while (!isFinished()) {
 				worker.visit(getWorkerNearestAction(worker));
@@ -44,7 +47,7 @@ public class Main {
 	/**
 	 * A greedy implementation using all workers, used for number 3
 	 */
-	private static void simulate() {
+	private static void greedy() {
 		
 		long totalCost = 0l;
 		
@@ -69,7 +72,7 @@ public class Main {
 			totalCost += minDistance;
 			
 			if (totalCost > Budget) {
-				System.out.println("Suicide is the best way to go from here");
+				System.err.println("This should never happen...");
 				System.exit(-1);
 			}
 		}
