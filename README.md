@@ -67,10 +67,10 @@ We ended up running two seperate approaches for this competition. We ran either 
 ```
 
 ## Pre-freezing Leaderboard (1 hour remaining)
-![Pre-freezing Leaderboard](images/frozen_leaderboard.png)
+![Pre-freezing Leaderboard](images/frozen_leaderboard.jpeg)
 
-###(Special thanks to [Angus Mackenzie](https://github.com/AngusTheMack) for having written up a great ReadMe on [his repo](https://github.com/AngusTheMack/entelect))
 # Main Challenge
+###(Special thanks to [Angus Mackenzie](https://github.com/AngusTheMack) for having written up a great ReadMe on [his repo](https://github.com/AngusTheMack/entelect))
 ## Problem Description
 A department at a specific military base that specializes in the mining and refining of the natural elements has approached you with a problem. They have sites where they have implemented automated worker drones to gather resources from mines and transport those resources to their factories for processing.
 
